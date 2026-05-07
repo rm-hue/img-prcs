@@ -1,0 +1,27 @@
+{
+  "classes": {
+    "0": "bottle_good",
+    "1": "bottle_bad",
+    "2": "BSD_good",
+    "3": "BSD_bad",
+    "4": "cable_good",
+    "5": "cable_bad",
+    "6": "capsule_good",
+    "7": "capsule_bad",
+    "8": "carpet_good",
+    "9": "carpet_bad",
+    "10": "grid_good",
+    "11": "grid_bad",
+    "12": "hazelnut_good",
+    "13": "hazelnut_bad"
+  },
+  "products": [
+    "bottle",
+    "BSD",
+    "cable",
+    "capsule",
+    "carpet",
+    "grid",
+    "hazelnut"
+  ]
+}
