@@ -37,7 +37,7 @@ backend/
 └── (each category contains bad/ and good/ subfolders with training images)
 
 
-1st result
+1st training result (partial dataset, 7 classes)
 Loading dataset...
 Total: 4902 images | Classes: 14
 Split: Train 3431 | Val 735 | Test 736
@@ -57,7 +57,7 @@ Test Accuracy (Defective vs OK): 90.62%
 Saved defect_model.pth and labels.json
 
 
-2nd result
+2nd training result (partial dataset, 7 classes)
 Found 6090 total images.
 Initializing ResNet50...
 Downloading: "https://download.pytorch.org/models/resnet50-11ad3fa6.pth" to C:\Users\HAL/.cache\torch\hub\checkpoints\resnet50-11ad3fa6.pth
@@ -108,7 +108,8 @@ Per-Category Breakdown:
   grid       :  61.0%
   hazelnut   :  98.5%
 
-3rd testing
+3rd training (partial dataset, 7 classes)
+
 Found 3045 total images.
 Initializing ResNet50...
 Starting training for 20 epochs...
@@ -160,7 +161,140 @@ Per-Item Breakdown:
 
 Graph saved as 'training_graphs.png'
 
+4th training, full 15 classes, (30 categories)
 
+(venv) PS C:\Users\ritwi\OneDrive\Desktop\ex\img-prcs> python train.py        
+Device: DirectML — AMD/Intel GPU via DirectX 12
+Loading dataset...
+Total: 5354 images | Classes: 30/30
+  bottle_good              :  229
+  bottle_bad               :   63
+  cable_good               :  282
+  cable_bad                :   92
+  capsule_good             :  242
+  capsule_bad              :  109
+  carpet_good              :  308
+  carpet_bad               :   89
+  grid_good                :  285
+  grid_bad                 :   57
+  hazelnut_good            :  431
+  hazelnut_bad             :   70
+  leather_good             :  277
+  leather_bad              :   92
+  metal_nut_good           :  242
+  metal_nut_bad            :   93
+  pill_good                :  293
+  pill_bad                 :  141
+  screw_good               :  361
+  screw_bad                :  119
+  tile_good                :  263
+  tile_bad                 :   84
+  toothbrush_good          :   72
+  toothbrush_bad           :   30
+  transistor_good          :  273
+  transistor_bad           :   40
+  wood_good                :  266
+  wood_bad                 :   60
+  zipper_good              :  272
+  zipper_bad               :  119
+
+Building ResNet50...
+Training 50 epochs | train=4283 val=1071
+
+C:\Users\ritwi\OneDrive\Desktop\ex\img-prcs\venv\Lib\site-packages\torch\optim\adamw.py:529: UserWarning: The operator 'aten::lerp.Scalar_out' is not currently supported on the DML backend and will fall back to run on the CPU. This may have performance implications. (Triggered internally at C:\__w\1\s\pytorch-directml-plugin\torch_directml\csrc\dml\dml_cpu_fallback.cpp:17.)
+  torch._foreach_lerp_(device_exp_avgs, device_grads, 1 - beta1)
+Epoch  1/50 | T_Loss:0.1156 T_Acc: 48.1% | V_Loss:0.0886 V_Acc: 47.5%
+  *** Best: 47.53% saved ***
+Epoch  2/50 | T_Loss:0.0785 T_Acc: 60.6% | V_Loss:0.0791 V_Acc: 68.9%
+  *** Best: 68.91% saved ***
+Epoch  3/50 | T_Loss:0.0737 T_Acc: 66.1% | V_Loss:0.0755 V_Acc: 71.1%
+  *** Best: 71.06% saved ***
+Epoch  4/50 | T_Loss:0.0867 T_Acc: 64.2% | V_Loss:0.0744 V_Acc: 75.4%
+  *** Best: 75.35% saved ***
+Epoch  5/50 | T_Loss:0.0808 T_Acc: 68.5% | V_Loss:0.0725 V_Acc: 75.1%
+Epoch  6/50 | T_Loss:0.0809 T_Acc: 68.4% | V_Loss:0.0692 V_Acc: 81.2%
+  *** Best: 81.23% saved ***
+Epoch  7/50 | T_Loss:0.0761 T_Acc: 72.9% | V_Loss:0.0668 V_Acc: 84.5%
+  *** Best: 84.50% saved ***
+Epoch  8/50 | T_Loss:0.0809 T_Acc: 71.8% | V_Loss:0.0651 V_Acc: 84.1%
+Epoch  9/50 | T_Loss:0.0776 T_Acc: 74.2% | V_Loss:0.0639 V_Acc: 90.4%
+  *** Best: 90.38% saved ***
+Epoch 10/50 | T_Loss:0.0783 T_Acc: 73.3% | V_Loss:0.0637 V_Acc: 90.7%
+  *** Best: 90.66% saved ***
+Epoch 11/50 | T_Loss:0.0742 T_Acc: 77.2% | V_Loss:0.0641 V_Acc: 88.4%
+Epoch 12/50 | T_Loss:0.0761 T_Acc: 75.7% | V_Loss:0.0622 V_Acc: 91.9%
+  *** Best: 91.88% saved ***
+Epoch 13/50 | T_Loss:0.0731 T_Acc: 78.3% | V_Loss:0.0623 V_Acc: 91.9%
+Epoch 14/50 | T_Loss:0.0716 T_Acc: 79.5% | V_Loss:0.0611 V_Acc: 91.1%
+Epoch 15/50 | T_Loss:0.0728 T_Acc: 79.2% | V_Loss:0.0616 V_Acc: 92.1%
+  *** Best: 92.06% saved ***
+Epoch 16/50 | T_Loss:0.0714 T_Acc: 80.4% | V_Loss:0.0603 V_Acc: 91.5%
+Epoch 17/50 | T_Loss:0.0710 T_Acc: 80.4% | V_Loss:0.0592 V_Acc: 93.9%
+  *** Best: 93.93% saved ***
+Epoch 18/50 | T_Loss:0.0688 T_Acc: 82.1% | V_Loss:0.0588 V_Acc: 94.3%
+  *** Best: 94.30% saved ***
+Epoch 19/50 | T_Loss:0.0693 T_Acc: 81.0% | V_Loss:0.0608 V_Acc: 92.2%
+Epoch 20/50 | T_Loss:0.0693 T_Acc: 81.5% | V_Loss:0.0588 V_Acc: 93.0%
+Epoch 21/50 | T_Loss:0.0676 T_Acc: 83.8% | V_Loss:0.0600 V_Acc: 92.4%
+Epoch 22/50 | T_Loss:0.0660 T_Acc: 84.4% | V_Loss:0.0600 V_Acc: 91.5%
+Epoch 23/50 | T_Loss:0.0675 T_Acc: 84.1% | V_Loss:0.0593 V_Acc: 93.5%
+Epoch 24/50 | T_Loss:0.0670 T_Acc: 84.1% | V_Loss:0.0594 V_Acc: 92.6%
+Epoch 25/50 | T_Loss:0.0646 T_Acc: 85.1% | V_Loss:0.0594 V_Acc: 95.3%
+  *** Best: 95.33% saved ***
+Epoch 26/50 | T_Loss:0.0671 T_Acc: 83.9% | V_Loss:0.0584 V_Acc: 94.4%
+Epoch 27/50 | T_Loss:0.0648 T_Acc: 85.0% | V_Loss:0.0598 V_Acc: 92.6%
+Epoch 28/50 | T_Loss:0.0663 T_Acc: 84.2% | V_Loss:0.0582 V_Acc: 93.9%
+Epoch 29/50 | T_Loss:0.0657 T_Acc: 84.5% | V_Loss:0.0582 V_Acc: 95.0%
+Epoch 30/50 | T_Loss:0.0632 T_Acc: 86.4% | V_Loss:0.0574 V_Acc: 94.7%
+Epoch 31/50 | T_Loss:0.0662 T_Acc: 84.8% | V_Loss:0.0575 V_Acc: 94.1%
+Epoch 32/50 | T_Loss:0.0636 T_Acc: 85.8% | V_Loss:0.0576 V_Acc: 94.5%
+Epoch 33/50 | T_Loss:0.0655 T_Acc: 84.7% | V_Loss:0.0579 V_Acc: 95.1%
+Epoch 34/50 | T_Loss:0.0666 T_Acc: 84.4% | V_Loss:0.0580 V_Acc: 94.0%
+Epoch 35/50 | T_Loss:0.0628 T_Acc: 86.3% | V_Loss:0.0578 V_Acc: 94.3%
+Epoch 36/50 | T_Loss:0.0639 T_Acc: 85.5% | V_Loss:0.0576 V_Acc: 95.1%
+Epoch 37/50 | T_Loss:0.0646 T_Acc: 85.8% | V_Loss:0.0579 V_Acc: 94.9%
+Epoch 38/50 | T_Loss:0.0674 T_Acc: 84.4% | V_Loss:0.0592 V_Acc: 94.5%
+Epoch 39/50 | T_Loss:0.0634 T_Acc: 86.0% | V_Loss:0.0580 V_Acc: 94.5%
+Epoch 40/50 | T_Loss:0.0631 T_Acc: 86.5% | V_Loss:0.0576 V_Acc: 95.0%
+
+Early stop at epoch 40
+
+Done! Best val acc: 95.33%
+
+==================================================
+Overall Accuracy: 95.33%
+Anomaly Detection F1: 89.18%  (good vs bad, binary)
+
+  bottle_good              : 100.0%  (46 samples)
+  bottle_bad               : 100.0%  (13 samples)
+  cable_good               : 100.0%  (57 samples)
+  cable_bad                :  66.7%  (18 samples)
+  capsule_good             : 100.0%  (48 samples)
+  capsule_bad              :  63.6%  (22 samples)
+  carpet_good              : 100.0%  (62 samples)
+  carpet_bad               :  94.4%  (18 samples)
+  grid_good                : 100.0%  (57 samples)
+  grid_bad                 : 100.0%  (11 samples)
+  hazelnut_good            : 100.0%  (86 samples)
+  hazelnut_bad             : 100.0%  (14 samples)
+  leather_good             :  98.2%  (55 samples)
+  leather_bad              : 100.0%  (18 samples)
+  metal_nut_good           : 100.0%  (48 samples)
+  metal_nut_bad            :  84.2%  (19 samples)
+  pill_good                :  96.6%  (59 samples)
+  pill_bad                 :  60.7%  (28 samples)
+  screw_good               :  98.6%  (72 samples)
+  screw_bad                :  50.0%  (24 samples)
+  tile_good                : 100.0%  (53 samples)
+  tile_bad                 : 100.0%  (17 samples)
+  toothbrush_good          : 100.0%  (14 samples)
+  toothbrush_bad           :  50.0%  (6 samples)
+  transistor_good          : 100.0%  (55 samples)
+  transistor_bad           :  75.0%  (8 samples)
+  wood_good                : 100.0%  (53 samples)
+  wood_bad                 : 100.0%  (12 samples)
+  zipper_good              : 100.0%  (54 samples)
+  zipper_bad               : 100.0%  (24 samples)
 
 
 index.html
