@@ -33,6 +33,11 @@ img-prcs/                          # Project root (flat layout — no separate f
 │   └── zipper/
 │       (15 categories × 2 labels = 30 classes total | ~5354 images)
 │
+│   Dataset Links:
+│   Official  → https://www.mvtec.com/company/research/datasets/mvtec-ad
+│   Kaggle    → https://www.kaggle.com/datasets/ipythonx/mvtec-ad
+│   Paper     → https://link.springer.com/article/10.1007/s11263-020-01400-4
+│
 └── venv/                          # Python 3.12 virtual environment (NOT in git)
     └── (torch, torchvision, torch-directml, flask, sklearn, matplotlib, seaborn)
 
