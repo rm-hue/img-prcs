@@ -1,40 +1,42 @@
-image processing/
-├── backend/           # Backend application (Python/Flask)
-└── frontend/         # Frontend web interface
-
-frontend/
-├── index.html      # Main HTML page
-├── index.js       # JavaScript logic
-└── index.css      # Stylesheet
-backend/
-├── app.py            # Flask web application
-├── train.py          # Model training script
-├── requirements.txt # Python dependencies
-├── labels.json       # Label mappings
-├── defect_model.pth  # Trained PyTorch model
-├── archive/          # Dataset archives (various product defect datasets)
-│   ├── data.json
+img-prcs/                          # Project root (flat layout — no separate frontend/backend)
+├── app.py                         # Flask web server — loads model, serves /predict API + index.html
+├── train.py                       # ResNet50 training script — full pipeline (data→model→dashboard)
+├── index.html                     # Frontend UI — drag & drop image upload, shows prediction results
+├── summary.md                     # Project documentation — architecture, results, deployment guide
+├── txt.md                         # Training logs, file history, old code snapshots
+├── requirements.txt               # Python dependencies (torch, torchvision, flask, sklearn, etc.)
+├── labels.json                    # Legacy label map (7-class era) — NOT used by current train.py/app.py
+├── training_dashboard.png         # Auto-generated after training — accuracy/loss/confusion/per-class plots
+├── best_exact_class_model.pth     # Trained ResNet50 weights (142MB) — NOT in git (.gitignore), share via Drive
+├── .gitignore                     # Excludes: *.pth, archive/, venv/, .agents/
+│
+├── archive/                       # MVTec AD dataset (NOT in git — too large)
 │   ├── bottle/
-│   ├── BSD/
+│   │   ├── train/good/            # Normal product images used for training
+│   │   └── test/
+│   │       ├── good/              # Normal product images used for testing
+│   │       ├── broken_large/      # Defect subtype → all merged as "bad" label
+│   │       └── contamination/     # Defect subtype → all merged as "bad" label
 │   ├── cable/
 │   ├── capsule/
 │   ├── carpet/
 │   ├── grid/
 │   ├── hazelnut/
-│   ├── KolektorSDD/
-│   ├── KolektorSDD2/
 │   ├── leather/
-│   ├── MagneticTile/
 │   ├── metal_nut/
-│   ├── mutou/
-│   ├── phone/
 │   ├── pill/
-│   ├── railway/
+│   ├── screw/
 │   ├── tile/
 │   ├── toothbrush/
+│   ├── transistor/
 │   ├── wood/
 │   └── zipper/
-└── (each category contains bad/ and good/ subfolders with training images)
+│       (15 categories × 2 labels = 30 classes total | ~5354 images)
+│
+└── venv/                          # Python 3.12 virtual environment (NOT in git)
+    └── (torch, torchvision, torch-directml, flask, sklearn, matplotlib, seaborn)
+
+
 
 
 1st training result (partial dataset, 7 classes)
